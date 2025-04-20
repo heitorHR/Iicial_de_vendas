@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperTech - Loja de Eletrônicos</title>
+
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to right, #e0f7ff, #ccf2ff, #b3ecff, #99e6ff, #80e0ff);
+
+            color: #212529;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #000000, #0d6efd, #00008b);           
+             color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo1 img {
+            width: 40px; /* Tamanho ajustado para ficar proporcional ao texto */
+            height: auto;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .logo1 img:hover {
+            transform: scale(1.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+     
+
+
+
+        .logo span {
+            color: #0d6efd;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 10px; /* Espaçamento entre os botões */
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 0; /* Remove a margem esquerda grande */
+        }
+
+        nav ul li a {
+            display: inline-block;
+            background: linear-gradient(to right, #e0f7ff, #ccf2ff, #b3ecff, #99e6ff, #80e0ff);
+
+            color: #3e9df5;
+            padding: 10px 20px; /* Reduzi o padding para ficar mais compacto */
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px; /* Tamanho de fonte um pouco menor */
+            transition: all 0.3s;
+            white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+        }
+
+        nav ul li a:hover {
+            background-color: #0d6efd;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Estilo especial para o ícone do carrinho */
+        nav ul li:last-child a {
+            background: transparent;
+            padding: 0;
+        }
+
+        nav ul li:last-child a:hover {
+            background: transparent;
+            transform: none;
+            box-shadow: none;
+        }
+
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #0d6efd;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        /* Banner */
+        .banner {
+            background: linear-gradient(to right, #4e6bff, #1cd8d2);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .banner h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .banner p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: #0d6efd;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #0d6efd;
+            transform: translateY(-3px);
+            color: #1cd8d2;
+        }
+        
+        /* Produtos */
+        .products-section {
+            padding: 50px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #343a40;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+.product-image {
+    width: 100%; /* Ocupa toda a largura do card */
+    height: 200px; /* Altura fixa */
+    background-color: #f1f1f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Esconde qualquer parte da imagem que ultrapasse */
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem cobrir todo o espaço mantendo proporção */
+    /* object-fit: contain; */ /* Alternativa: mostra imagem inteira sem cortes */
+}
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #343a40;
+        }
+        
+        .product-price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 15px;
+        }
+        
+        .product-description {
+            color: #6c757d;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #0b5ed7;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #000000, #0d6efd, #00008b);           
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #adb5bd;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-column p {
+            color: #adb5bd;
+            line-height: 1.6;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 14px;
+        }
+        
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .banner h1 {
+                font-size: 36px;
+            }
+            
+            .banner p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo1">
+                        <a href="../Inicial_page/inicial.html"><img src="../Img.ebooks/2f5e8055-3ad8-4914-aba6-026ef7d8d631.png" alt="Logo Store E-book">
+                        </a>
+                    </div>
+                    <div class="logo">Store<span>E-book</span></div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a onclick="document.getElementById('secao').scrollIntoView({ behavior: 'smooth' });">E-book's</a></li>
+                        <li><a href="#">Ofertas</a></li>
+                        <li><a onclick="document.getElementById('secao2').scrollIntoView({ behavior: 'smooth' });">Contato</a></li>
+                        <li>
+                            
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="banner">
+        <div class="container">
+            <h1>As Melhores Ofertas de E-book pra melhor desenvolvimento </h1>
+            <p>Descubra nossos E-book's de diversos temas para melhor aprendizado </p>
+            <a onclick="document.getElementById('secao').scrollIntoView({ behavior: 'smooth' });" href="#" class="btn">Ver Ofertas</a>
+        </div>
+    </section>
+    
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Nossos E-book's</h2>
+            <div class="products-grid" id="products-container">
+                <!-- Produto 1 -->
+                <div id="secao">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="../Img.ebooks/DesenvolvimentoProficional.webp" alt="">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">E-book: Produtividade e Desenvolvimento Pessoal</h3>
+                            <p class="product-price">R$ 50.00</p>
+                            <p class="product-description">Melhore seu desenvolvimento e controle seus Habítos .</p>
+                            <a href="https://pay.kirvano.com/971270dd-8a00-4936-b339-d024f793386d">
+                                <button class="add-to-cart" data-id="1">COMPRAR</button>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Produto 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../Img.ebooks/GanharDinheiro.webp" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">MEGA E-BOOK: Como Ganhar Dinheiro Online </h3>
+                        <p class="product-price">R$ 15.00</p>
+                        <p class="product-description">Aprenda como ganhar dinheiro sem sair de casa é ter uma renda extra.</p>
+                        <a href="https://pay.kirvano.com/512b871b-f8f1-45b4-9691-02661b4b1946">
+                            <button class="add-to-cart" data-id="1">COMPRAR</button>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Produto 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../Img.ebooks/INTELIGENCIAartificial.webp" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">E-book:INTELIGÊNCIA ARTIFICIAL & AUTOMAÇÃO</h3>
+                        <p class="product-price">R$ 20.00</p>
+                        <p class="product-description">Aprenda como controlar a I.A é automação </p>
+                        <a href="https://pay.kirvano.com/6002cb02-f6cd-4903-a48f-1a3d0eeff2bc">
+                            <button class="add-to-cart" data-id="1">COMPRAR</button>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- E-book 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../Img.ebooks/INTELIGENCIAartificial.webp" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">E-book:INTELIGÊNCIA ARTIFICIAL & AUTOMAÇÃO</h3>
+                        <p class="product-price">R$ 20.00</p>
+                        <p class="product-description">Aprenda como controlar a I.A é automação </p>
+                        <a href="https://pay.kirvano.com/6002cb02-f6cd-4903-a48f-1a3d0eeff2bc">
+                            <button class="add-to-cart" data-id="1">COMPRAR</button>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- E-book 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../Img.ebooks/INTELIGENCIAartificial.webp" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">E-book:INTELIGÊNCIA ARTIFICIAL & AUTOMAÇÃO</h3>
+                        <p class="product-price">R$ 20.00</p>
+                        <p class="product-description">Aprenda como controlar a I.A é automação </p>
+                        <a href="https://pay.kirvano.com/6002cb02-f6cd-4903-a48f-1a3d0eeff2bc">
+                            <button class="add-to-cart" data-id="1">COMPRAR</button>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- E-book 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../Img.ebooks/INTELIGENCIAartificial.webp" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">E-book:INTELIGÊNCIA ARTIFICIAL & AUTOMAÇÃO</h3>
+                        <p class="product-price">R$ 20.00</p>
+                        <p class="product-description">Aprenda como controlar a I.A é automação </p>
+                        <a href="https://pay.kirvano.com/6002cb02-f6cd-4903-a48f-1a3d0eeff2bc">
+                            <button class="add-to-cart" data-id="1">COMPRAR</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div id="secao2">
+
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sobre StoreEbook</h3>
+                    <p>Uma loga virtual que vende E-book's com função de ajudar as pessoas com diversos  E-book's de diversos temas </p>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#">Produtos</a></li>
+                        <li><a href="#">Promoções</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Ajuda</h3>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Política de Troca</a></li>
+                        <li><a href="#">Formas de Pagamento</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><a href="tel:+5511999999999">(11) 91653-1620</a></li>
+                        <li><a href="mailto:contato@supertech.com.br">heitor.1213oliveira@gmail.com</a></li>
+                    
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 StoreEbook. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+</html>

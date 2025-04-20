@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo ao Store E-book</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #000000, #0d6efd, #00008b);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .welcome-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: auto;
+            margin-right: 15px;
+            border-radius: 10px;
+        }
+        
+        .logo-text {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        
+        .logo-text span {
+            color: #0d6efd;
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+            min-width: 150px;
+        }
+        
+        .btn-login {
+            background-color: #0d6efd;
+            color: white;
+            border: 2px solid #0d6efd;
+        }
+        
+        .btn-login:hover {
+            background-color: transparent;
+            transform: translateY(-3px);
+        }
+        
+        .btn-signup {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-signup:hover {
+            background-color: white;
+            color: #0d6efd;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 600px) {
+            .welcome-container {
+                padding: 30px 20px;
+            }
+            
+            .logo-text {
+                font-size: 28px;
+            }
+            
+            h1 {
+                font-size: 26px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="logo-container">
+            <img src="../Img.ebooks/2f5e8055-3ad8-4914-aba6-026ef7d8d631.png" alt="Logo Store E-book" class="logo-img">
+            <div class="logo-text">Store<span>E-book</span></div>
+        </div>
+        
+        <h1>Bem-vindo à sua nova experiência de leitura</h1>
+        <p>Descubra milhares de e-books dos mais diversos gêneros. Acesse sua conta ou cadastre-se para começar a explorar nosso acervo.</p>
+        
+        <div class="buttons-container">
+            <a href="../Home_vendas/Index.html" class="btn btn-login">Store</a>
+            <a href="../login_page/login.html" class="btn btn-signup"> Entrar ou Cadastre-se</a>
+        </div>
+    </div>
+</body>
+</html>
